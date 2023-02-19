@@ -28,7 +28,7 @@ def currency(i):
 # Generate Table of increment
 ## Learn this code
 ctc_old=2100000
-st.success('Increment Table based on Current Salary : ₹21,00,000')
+st.success('Increment Table based on you Current Salary : ₹21,00,000')
 hike = list(range(5, 145, 5))
 hike_perc=[ str(i)+str('%') for i in hike]
 new_salary = [float(ctc_old) + ((hike[i]/100) * float(ctc_old)) for i in range(len(hike))]
@@ -47,6 +47,7 @@ with st.sidebar:
 
     if btn:
         hike=((float(ctc_new)-float(ctc_old))/float(ctc_old))*100
+        hike=round(hike,1)
         hike='You got '+ str(hike)+'%' + ' hike'
         st.write(hike)
         st.success('If you do Negotiation Successful')
