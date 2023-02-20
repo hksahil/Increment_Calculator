@@ -55,7 +55,7 @@ with st.sidebar:
         st.write(hike)
         st.success('If you do Negotiation Successful 💸')
         ten_perc_more=float(ctc_old)+(((10+hike_num)/100)*float(ctc_old))
-        hike_new='➡️ 10 % more will be '+ currency(str(ten_perc_more))
+        hike_new='➡️ 10% more will be '+ currency(str(ten_perc_more))
         st.write(hike_new)
 
 # Footer
