@@ -45,18 +45,18 @@ st.table(df)
 
 # Sidebar
 with st.sidebar:
-    st.info("Got New Salary Number?")
+    st.info("Got New Salary?")
     ctc_new=st.text_input("Enter your New CTC")
     st.write('Enter Number without commas and symbols')
     btn=st.button('Calculate Hike %')
 
     if btn:
         hike=round(((float(ctc_new)-float(ctc_old))/float(ctc_old))*100,1)
-        hike='You got '+ str(hike)+'%' + ' hike'
+        hike='➡️ You got '+ str(hike)+'%' + ' hike'
         st.write(hike)
         st.success('If you do Negotiation Successful')
         ten_perc_more=float(ctc_new)+((10/100)*float(ctc_new))
-        hike_new='10 % more will be '+ currency(str(ten_perc_more))
+        hike_new='➡️ 10 % more will be '+ currency(str(ten_perc_more))
         st.write(hike_new)
 
 # Footer
