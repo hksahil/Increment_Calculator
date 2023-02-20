@@ -50,7 +50,7 @@ with st.sidebar:
     btn=st.button('Calculate Hike %')
 
     if btn:
-        hike_num=round(((float(ctc_new)-float(ctc_old))/float(ctc_old))*100,1)
+        hike_num=round(((float(ctc_new)-float(ctc_old))/float(ctc_old))*100,3)
         hike='➡️ You got '+ str(hike_num)+'%' + ' hike'
         st.write(hike)
         st.success('If you do Negotiation Successful')
