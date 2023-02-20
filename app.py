@@ -46,8 +46,7 @@ st.table(df)
 # Sidebar
 with st.sidebar:
     st.info("Got New Salary?")
-    ctc_new=st.text_input("Enter your New CTC")
-    st.write('Enter Number without commas and symbols')
+    ctc_new=st.text_input("Enter your New CTC",help='Enter Number without commas and symbols')
     btn=st.button('Calculate Hike %')
 
     if btn:
