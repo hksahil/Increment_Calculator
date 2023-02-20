@@ -1,4 +1,3 @@
-
 # Import Libraries
 import pandas as pd
 import numpy as np
@@ -19,35 +18,40 @@ hide_st_style = """
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
-
+# Add commas and Rupee sign
 def currency(i):
     new_string=format_currency(i, 'INR', locale='en_IN').replace(u'\xa0', u' ')
     new_string=new_string.replace('.00', '') 
     return new_string
 
 # Generate Table of increment
-## Learn this code
-ctc_old=2100000
-st.success('Increment Table based on Current Salary : ₹21,00,000')
+#ctc_old=2100000
+st.success('Calculate Increments based on your Current Salary')
+ctc_old=st.number_input('Select your CTC ( 21 Lakhs selected by default)',value=2100000,step=100000,help='Tooltip',format='%u')
+
 hike = list(range(5, 145, 5))
 hike_perc=[ str(i)+str('%') for i in hike]
 new_salary = [float(ctc_old) + ((hike[i]/100) * float(ctc_old)) for i in range(len(hike))]
+
+# Creating the dataframe
 df = pd.DataFrame({'Hike %': hike_perc, 'New Salary': new_salary})
+
+# Formatting the columns
 df['Hike %']=[str(i)+' ⭐️' if i=='50%' or i=='100%' else i for i in df['Hike %']]
 df['New Salary']= [currency(i) for i in df['New Salary']]
 
+# Showing Table on Screen
 st.table(df)
 
-# Scripting 
+# Sidebar
 with st.sidebar:
     st.info("Got New Salary Number?")
     ctc_new=st.text_input("Enter your New CTC")
     st.write('Enter Number without commas and symbols')
-    btn=st.button('Calculate')
+    btn=st.button('Calculate Hike %')
 
     if btn:
-        hike=((float(ctc_new)-float(ctc_old))/float(ctc_old))*100
-        hike=round(hike,1)
+        hike=round(((float(ctc_new)-float(ctc_old))/float(ctc_old))*100,1)
         hike='You got '+ str(hike)+'%' + ' hike'
         st.write(hike)
         st.success('If you do Negotiation Successful')
@@ -55,7 +59,6 @@ with st.sidebar:
         hike_new='10 % more will be '+ currency(str(ten_perc_more))
         st.write(hike_new)
 
-
-
+# Footer
 st.markdown('---')
-st.markdown('Made by Sahil')
+st.markdown('Made with :heart: by [Sahil Choudhary](https://www.sahilchoudhary.ml/)')
