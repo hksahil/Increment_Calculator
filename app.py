@@ -27,7 +27,7 @@ def currency(i):
 # Generate Table of increment
 #ctc_old=2100000
 st.success('Calculate Increments based on your Current Salary')
-ctc_old=st.number_input('Select your Current CTC ( 21 Lakhs selected by default )',value=2100000,step=100000,help='Based on your entered salary, you will get the table of hikes with the gaps of 5%',format='%u')
+ctc_old=st.number_input('Select your CTC ( 21 Lakhs selected by default )',value=2100000,step=100000,help='Based on your entered salary, you will get the table of hikes with the gaps of 5%',format='%u')
 
 hike = list(range(5, 145, 5))
 hike_perc=[ str(i)+str('%') for i in hike]
@@ -50,11 +50,11 @@ with st.sidebar:
     btn=st.button('Calculate Hike %')
 
     if btn:
-        hike=round(((float(ctc_new)-float(ctc_old))/float(ctc_old))*100,1)
-        hike='➡️ You got '+ str(hike)+'%' + ' hike'
+        hike_num=round(((float(ctc_new)-float(ctc_old))/float(ctc_old))*100,1)
+        hike='➡️ You got '+ str(hike_num)+'%' + ' hike'
         st.write(hike)
         st.success('If you do Negotiation Successful')
-        ten_perc_more=float(ctc_new)+((10/100)*float(ctc_new))
+        ten_perc_more=float(ctc_old)+(((10+hike_num)/100)*float(ctc_old))
         hike_new='➡️ 10 % more will be '+ currency(str(ten_perc_more))
         st.write(hike_new)
 
