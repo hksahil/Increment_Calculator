@@ -27,7 +27,7 @@ def currency(i):
 # Generate Table of increment
 #ctc_old=2100000
 st.success('Calculate Increments based on your Current Salary')
-ctc_old=st.number_input('Select your CTC ( 21 Lakhs selected by default )',value=2200000,step=100000,help='Based on your entered salary, you will get the table of hikes with the gaps of 5%',format='%u')
+ctc_old=st.number_input('Select your CTC ( 22 Lakhs selected by default )',value=2200000,step=100000,help='Based on your entered salary, you will get the table of hikes with the gaps of 5%',format='%u')
 
 hike = list(range(5, 145, 5))
 hike_perc=[ str(i)+str('%') for i in hike]
