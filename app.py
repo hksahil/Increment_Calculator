@@ -1,9 +1,6 @@
 # Notes
 # Right screen table is based on simple interest
 # Left screen dream ctc calculator is based on compound interest so both might not match
-# By default log of numpy is natural log which isn't used in most of the irl calculations
-# log 2 is only used when we talk about binary which isn't used in most of the irl calculations
-# log10 is used in irl since it talks about decimals which is used in irl
 
 # Import Libraries
 import pandas as pd
@@ -34,7 +31,7 @@ def currency(i):
 # Generate Table of increment
 #ctc_old=2100000
 st.header('Calculate Increments on your Current Salary')
-ctc_old=st.number_input('Select your CTC ( 21 Lakhs selected by default )',value=2200000,step=100000,help='Based on your entered salary, you will get the table of hikes with the gaps of 5%',format='%u')
+ctc_old=st.number_input('Select your CTC ( 22 Lakhs selected by default )',value=2200000,step=100000,help='Based on your entered salary, you will get the table of hikes with the gaps of 5%',format='%u')
 
 hike = list(range(5, 105, 5))
 hike_perc=[ str(i)+str('%') for i in hike]
