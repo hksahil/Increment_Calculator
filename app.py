@@ -4,6 +4,7 @@
 
 # Import Libraries
 import pandas as pd
+import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 from io import BytesIO
@@ -31,7 +32,7 @@ def currency(i):
 # Generate Table of increment
 #ctc_old=2100000
 st.header('Calculate Increments on your Current Salary')
-ctc_old=st.number_input('Select your CTC ( 22 Lakhs selected by default )',value=2200000,step=100000,help='Based on your entered salary, you will get the table of hikes with the gaps of 5%',format='%u')
+ctc_old=st.number_input('Select your CTC ( 21 Lakhs selected by default )',value=2100000,step=100000,help='Based on your entered salary, you will get the table of hikes with the gaps of 5%',format='%u')
 
 hike = list(range(5, 105, 5))
 hike_perc=[ str(i)+str('%') for i in hike]
@@ -48,9 +49,23 @@ df1={'Hike':[5,10],'Salary':[200,400]}
 # Showing Table on Screen
 st.table(df)
 
-# Bar Chart
-st.bar_chart(df1,x='Hike',y='Salary')
-
+st.markdown('---')
+st.header('Your Salary Projections')
+ctc1=st.number_input("Enter your Current CTC",value=2100000,step=100000)
+avg_hike1=st.number_input("Enter your annual Increment",value=20,step=5)
+btn11=st.button('Generate Graph')
+if btn11 and avg_hike1: 
+    # Bar Chart starts
+    years = [2023, 2024, 2025]
+    salaries = [ctc1]
+    for i in range(1, len(years)):
+            previous_salary = salaries[i - 1]
+            new_salary = previous_salary + ((20/100) * previous_salary)
+            salaries.append(new_salary)
+    df = pd.DataFrame({'Year': years, 'Salary': salaries})
+    st.bar_chart(df.set_index('Year'))
+#st.bar_chart(df1,x='Hike',y='Salary')
+# Bar Chart ends
 
 # Initialize session state
 # By default, streamlit rerun everytime button is pressed
