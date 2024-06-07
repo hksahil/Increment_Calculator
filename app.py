@@ -50,7 +50,7 @@ st.table(df)
 
 st.markdown('---')
 st.header('Your Salary Projections')
-ctc1=st.number_input("Enter your Current CTC",value=2100000,step=100000)
+ctc1=st.number_input("Enter your Current CTC",value=2900000,step=100000)
 avg_hike1=st.number_input("Enter your annual Increment",value=20,step=5)
 btn11=st.button('Generate Graph')
 if btn11 and avg_hike1: 
